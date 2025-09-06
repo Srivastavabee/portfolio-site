@@ -48,3 +48,52 @@ ul {
     gap: 20px;
   }
 }
+
+* ===== About section fixes ===== */
+
+/* wider, balanced columns + proper shrinking */
+#about .grid-2, section#about .grid-2 {
+  grid-template-columns: 1.2fr 0.8fr;   /* text wider than image */
+  gap: 32px;
+  align-items: start;
+}
+
+/* let grid children shrink normally (prevents super-narrow first column) */
+.grid-2 > * { min-width: 0; }
+
+/* better typography & wrapping so long lines don't squish the column */
+#about p, #about li {
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;   /* breaks long words if needed */
+  word-break: break-word;
+}
+
+/* image sizing + card feel */
+#about img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 26px rgba(0,0,0,.25);
+}
+
+/* optional: light panel behind text for contrast */
+#about .panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+/* mobile stacking */
+@media (max-width: 900px) {
+  #about .grid-2, section#about .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  #about img { max-width: 100%; }
+}
+
